@@ -830,9 +830,14 @@ async function doLogin() {
   try {
     const res = await api('/api/login', { method:'POST', body:{ email, pass } });
     ME = res.user;
-    await loadRefs();
+    // Recharger /api/me pour avoir le profil complet (forts, lacunes, dispos)
+    // et les refs filtrées selon la filière/niveau de l'utilisateur
+    const [me2] = await Promise.all([api('/api/me'), loadRefs()]);
+    ME = me2.user;
     connectSocket();
     await loadConvos();
+    // Mettre à jour avatar + verrous AVANT de naviguer
+    renderTop();
     show(isProfileComplete(ME) ? 'dashboard' : 'profil');
     toast('Bienvenue ' + (ME.prenom||''));
   } catch(e) { if (errEl) errEl.textContent = e.message; }
@@ -1038,6 +1043,8 @@ function show(view, scrollTo) {
   document.querySelectorAll('.app-links a').forEach(a => {
     a.classList.toggle('active', a.getAttribute('data-go') === view);
   });
+  // Mettre à jour les verrous à chaque navigation
+  updateNavLocks();
 
   // Render spécifique
   if (view === 'dashboard') { renderDashboard(); }
@@ -1226,6 +1233,7 @@ document.addEventListener('change', (e) => {
     await loadRefs();
     connectSocket();
     await loadConvos();
+    renderTop(); // déverrouille les liens nav avant navigation
     show(isProfileComplete(ME) ? 'dashboard' : 'profil');
   } catch(e) {
     // Tente session admin

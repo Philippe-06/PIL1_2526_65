@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Rapport de projet — IFRI MentorLink — Groupe 65</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   STYLE MODERNE ÉPURÉ — IMPRIMABLE A4
+   ============================================================ */
+*{box-sizing:border-box;margin:0;padding:0}
+
+@page{size:A4;margin:22mm 20mm 22mm 20mm}
+
+html{font-size:11pt}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:#1a1a1a;
+  background:#fff;
+  line-height:1.65;
+  font-weight:400;
+}
+
+/* — Titres — */
+h1,h2,h3,h4,h5{
+  font-family:'Inter',sans-serif;
+  font-weight:700;
+  color:#0a1e3f;
+  line-height:1.25;
+  letter-spacing:-.015em;
+}
+h1{font-size:2.4rem;margin-bottom:.6em}
+h2{font-size:1.6rem;margin:2em 0 .6em;padding-bottom:.4em;border-bottom:2px solid #0a1e3f}
+h3{font-size:1.2rem;margin:1.6em 0 .5em;color:#1f3454}
+h4{font-size:1rem;margin:1.2em 0 .4em;color:#2e4870}
+h5{font-size:.95rem;margin:1em 0 .3em;font-weight:600}
+
+p{margin:0 0 .9em;text-align:justify;hyphens:auto}
+ul,ol{margin:0 0 1em 1.4em}
+li{margin-bottom:.3em}
+
+strong{font-weight:600;color:#0a1e3f}
+em{font-style:italic;color:#2e4870}
+
+/* — Liens — */
+a{color:#0a6f68;text-decoration:none;border-bottom:1px solid transparent;transition:.15s}
+a:hover{border-bottom-color:#0a6f68}
+
+/* — Code & technique — */
+code,pre{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.86em}
+code{background:#f4f5f7;color:#1f3454;padding:1px 6px;border-radius:4px;border:1px solid #e4e7eb}
+pre{
+  background:#0a1e3f;color:#e8eaf0;padding:14px 18px;border-radius:8px;
+  margin:1em 0;overflow-x:auto;line-height:1.5;font-size:.78rem;
+  page-break-inside:avoid;
+}
+pre code{background:transparent;color:inherit;border:none;padding:0}
+
+/* — Tables — */
+table{
+  width:100%;border-collapse:collapse;margin:1.2em 0;
+  font-size:.92rem;page-break-inside:avoid;
+}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid #e4e7eb}
+th{font-weight:600;color:#0a1e3f;background:#f4f5f7;border-bottom:2px solid #0a1e3f}
+td:first-child{font-weight:500}
+
+/* — Placeholders captures d'écran — */
+.screenshot{
+  margin:1.2em 0;padding:60px 24px;
+  border:2px dashed #c4c4c4;border-radius:8px;
+  background:#fafafa;text-align:center;
+  color:#6b6b6b;font-family:'JetBrains Mono',monospace;
+  font-size:.84rem;page-break-inside:avoid;
+}
+.screenshot b{display:block;font-size:1rem;color:#0a1e3f;margin-bottom:6px;font-family:'Inter',sans-serif}
+.screenshot small{display:block;margin-top:8px;font-size:.78rem;color:#9a9a9a}
+
+/* — Info box — */
+.box{
+  padding:16px 20px;border-radius:8px;margin:1.2em 0;
+  border-left:4px solid;page-break-inside:avoid;
+}
+.box-info{background:#f0f7ff;border-color:#3b82f6}
+.box-warn{background:#fff8e6;border-color:#f59e0b}
+.box-tech{background:#f4f5f7;border-color:#6b7280}
+.box h5{margin-top:0;color:#0a1e3f}
+
+/* — Page de garde — */
+.cover{
+  height:calc(100vh - 0px);min-height:240mm;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:60px 40px;text-align:center;page-break-after:always;
+}
+.cover .logo-block{display:flex;justify-content:space-around;align-items:center;margin-bottom:20px}
+.cover .logo{width:90px;height:90px;border:2px solid #0a1e3f;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0a1e3f;font-size:.84rem;text-align:center;padding:6px;line-height:1.2}
+.cover .main{margin:auto 0}
+.cover h1{font-size:3rem;margin:.4em 0;color:#0a1e3f}
+.cover .subtitle{font-size:1.2rem;color:#5e7494;font-weight:400;margin-bottom:2em}
+.cover .module{display:inline-block;padding:8px 18px;background:#0a1e3f;color:#fff;border-radius:6px;font-size:.95rem;font-weight:600;letter-spacing:.04em;margin-bottom:1em}
+.cover .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;text-align:left;margin-top:3em;max-width:600px;margin-left:auto;margin-right:auto}
+.cover .info-block h5{color:#5e7494;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:.4em}
+.cover .info-block p{margin:0;color:#1a1a1a;font-size:.95rem;text-align:left}
+.cover footer{font-size:.86rem;color:#5e7494;margin-top:30px}
+
+/* — Sauts de page — */
+.page-break{page-break-before:always}
+.no-break{page-break-inside:avoid}
+
+/* — Sommaire — */
+.toc{font-size:.95rem}
+.toc-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dotted #c4c4c4}
+.toc-item.indent{padding-left:22px;color:#5e7494}
+.toc-num{color:#5e7494;font-family:'JetBrains Mono',monospace;font-size:.84rem;flex-shrink:0;margin-left:12px}
+
+/* — Liste des membres — */
+.members-list{list-style:none;margin:0;padding:0}
+.members-list li{padding:6px 0;font-size:.96rem;border-bottom:1px solid #e4e7eb}
+.members-list li:last-child{border-bottom:none}
+
+/* — Chapitre header — */
+.chapter-tag{
+  display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.78rem;
+  color:#0a6f68;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:.4em;
+}
+
+/* — Footer note (pieds de page si imprimés) — */
+@media print{
+  body{font-size:10.5pt}
+  .no-print{display:none}
+  h2{page-break-after:avoid}
+  h3,h4{page-break-after:avoid}
+  pre,table,.screenshot,.box{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE DE GARDE
+     ═══════════════════════════════════════════════════ -->
+<section class="cover">
+  <div class="logo-block">
+    <div class="logo">UAC<br>Université<br>d'Abomey-<br>Calavi</div>
+    <div class="logo">IFRI<br>Institut de<br>Formation et de<br>Recherche en<br>Informatique</div>
+  </div>
+
+  <div class="main">
+    <span class="module">PIL1 — 2025/2026</span>
+    <h1>IFRI MentorLink</h1>
+    <p class="subtitle">Plateforme web de mentorat entre étudiants<br>de l'IFRI</p>
+
+    <div class="info-grid">
+      <div class="info-block">
+        <h5>Groupe</h5>
+        <p>Groupe 65</p>
+      </div>
+      <div class="info-block">
+        <h5>Filière</h5>
+        <p>Licence 1 — Génie Logiciel</p>
+      </div>
+      <div class="info-block">
+        <h5>Encadrant</h5>
+        <p>Dr. Sylvain KPOSSOU<br><em>(à confirmer)</em></p>
+      </div>
+      <div class="info-block">
+        <h5>Date de soumission</h5>
+        <p>10 juin 2026</p>
+      </div>
+    </div>
+
+    <div style="margin-top:2.4em;text-align:left;max-width:600px;margin-left:auto;margin-right:auto">
+      <h5 style="color:#5e7494;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6em">Membres du groupe</h5>
+      <ul class="members-list">
+        <li>Géovanni TOYHIN — <em>Développement back-end</em></li>
+        <li>LenoumiBel-Mira ADJAHO — <em>Modélisation BDD</em></li>
+        <li>Sergius DOSSOU — <em>Développement front-end</em></li>
+        <li>Mariam BIO-SOLE — <em>Tests &amp; documentation</em></li>
+        <li>Yannick HOUNGBO — <em>Conception &amp; rapport</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    Projet Intégrateur en Licence — Année académique 2025/2026<br>
+    Institut de Formation et de Recherche en Informatique (IFRI) — UAC, Bénin
+  </footer>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SOMMAIRE
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <h2 style="border:none;margin-top:0">Sommaire</h2>
+  <div class="toc">
+    <div class="toc-item"><span>Remerciements</span><span class="toc-num">3</span></div>
+    <div class="toc-item"><span>Résumé</span><span class="toc-num">4</span></div>
+    <div class="toc-item"><span><strong>Introduction générale</strong></span><span class="toc-num">5</span></div>
+    <div class="toc-item indent"><span>Contexte</span><span class="toc-num">5</span></div>
+    <div class="toc-item indent"><span>Problématique</span><span class="toc-num">5</span></div>
+    <div class="toc-item indent"><span>Objectifs</span><span class="toc-num">6</span></div>
+
+    <div class="toc-item"><span><strong>Chapitre 1 — Contexte &amp; Analyse</strong></span><span class="toc-num">7</span></div>
+    <div class="toc-item indent"><span>1.1 L'IFRI et ses étudiants</span><span class="toc-num">7</span></div>
+    <div class="toc-item indent"><span>1.2 Solutions existantes et leurs limites</span><span class="toc-num">8</span></div>
+    <div class="toc-item indent"><span>1.3 Notre proposition</span><span class="toc-num">9</span></div>
+
+    <div class="toc-item"><span><strong>Chapitre 2 — Conception</strong></span><span class="toc-num">10</span></div>
+    <div class="toc-item indent"><span>2.1 Cahier des charges</span><span class="toc-num">10</span></div>
+    <div class="toc-item indent"><span>2.2 Choix techniques</span><span class="toc-num">11</span></div>
+    <div class="toc-item indent"><span>2.3 Modélisation de la base de données</span><span class="toc-num">12</span></div>
+    <div class="toc-item indent"><span>2.4 Algorithme de matching</span><span class="toc-num">14</span></div>
+
+    <div class="toc-item"><span><strong>Chapitre 3 — Réalisation</strong></span><span class="toc-num">15</span></div>
+    <div class="toc-item indent"><span>3.1 Architecture technique</span><span class="toc-num">15</span></div>
+    <div class="toc-item indent"><span>3.2 Description des fichiers</span><span class="toc-num">16</span></div>
+    <div class="toc-item indent"><span>3.3 Fonctionnalités principales</span><span class="toc-num">18</span></div>
+
+    <div class="toc-item"><span><strong>Chapitre 4 — Manuel utilisateur</strong></span><span class="toc-num">21</span></div>
+    <div class="toc-item indent"><span>4.1 Inscription &amp; connexion</span><span class="toc-num">21</span></div>
+    <div class="toc-item indent"><span>4.2 Profil utilisateur</span><span class="toc-num">22</span></div>
+    <div class="toc-item indent"><span>4.3 Trouver des mentors</span><span class="toc-num">23</span></div>
+    <div class="toc-item indent"><span>4.4 Messagerie &amp; notifications</span><span class="toc-num">24</span></div>
+    <div class="toc-item indent"><span>4.5 Mot de passe oublié</span><span class="toc-num">25</span></div>
+    <div class="toc-item indent"><span>4.6 Tableau de bord administrateur</span><span class="toc-num">26</span></div>
+
+    <div class="toc-item"><span><strong>Chapitre 5 — Tests &amp; Validation</strong></span><span class="toc-num">27</span></div>
+    <div class="toc-item"><span><strong>Conclusion &amp; Perspectives</strong></span><span class="toc-num">28</span></div>
+    <div class="toc-item"><span>Webographie</span><span class="toc-num">29</span></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     REMERCIEMENTS
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <h2>Remerciements</h2>
+  <p>
+    Nous tenons à exprimer notre profonde gratitude à toutes les personnes qui ont contribué,
+    de près ou de loin, à la réalisation de ce projet.
+  </p>
+  <p>
+    Nos remerciements vont d'abord à notre encadrant, <strong>Dr. Sylvain KPOSSOU</strong>,
+    pour ses conseils précieux, sa disponibilité et la rigueur qu'il nous a transmise tout au long de ce semestre.
+  </p>
+  <p>
+    Nous remercions également <strong>l'ensemble du corps enseignant de l'IFRI</strong>,
+    en particulier les enseignants des modules d'algorithmique, de programmation,
+    de base de données et de programmation Web, dont les enseignements nous ont permis
+    de mener à bien ce projet intégrateur.
+  </p>
+  <p>
+    Nos remerciements s'étendent à <strong>la direction de l'IFRI et de l'UAC</strong> pour la qualité
+    de la formation dispensée et l'environnement propice à l'apprentissage et à la créativité.
+  </p>
+  <p>
+    Enfin, nous remercions <strong>nos camarades de promotion</strong> qui ont participé aux tests
+    de notre plateforme et dont les retours ont permis d'améliorer significativement
+    l'expérience utilisateur.
+  </p>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     RÉSUMÉ
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <h2>Résumé</h2>
+  <p>
+    <strong>IFRI MentorLink</strong> est une plateforme web destinée aux étudiants de l'Institut
+    de Formation et de Recherche en Informatique (IFRI) de l'Université d'Abomey-Calavi.
+    Elle vise à structurer l'entraide pédagogique entre étudiants en associant
+    automatiquement <em>mentors</em> et <em>mentorés</em> selon leurs compétences,
+    leurs lacunes et leurs disponibilités.
+  </p>
+  <p>
+    La plateforme repose sur un <strong>algorithme de matching pondéré</strong> qui croise trois
+    critères : la complémentarité des matières (50 %), la compatibilité des créneaux
+    horaires (30 %) et la proximité académique — même filière et niveau (20 %).
+    Chaque utilisateur dispose ainsi de deux listes distinctes : les <em>mentors qui peuvent
+    l'aider</em> et les <em>personnes qu'il peut lui-même mentorer</em>.
+  </p>
+  <p>
+    Une <strong>messagerie temps réel</strong> intégrée (Socket.IO) permet aux utilisateurs d'entrer
+    en contact, avec des <strong>notifications push in-app</strong> visibles depuis n'importe quelle
+    page du site. Un <strong>tableau de bord administrateur</strong> permet aux responsables
+    pédagogiques de gérer les filières, les matières et les programmes (matière par
+    filière et niveau).
+  </p>
+  <p>
+    Le projet est développé en <strong>Python (Flask + Flask-SocketIO)</strong> côté serveur,
+    en <strong>JavaScript natif</strong> côté client et utilise <strong>MySQL 8</strong> comme système
+    de gestion de base de données.
+  </p>
+  <p>
+    <strong>Mots-clés :</strong> mentorat, matching, étudiants, IFRI, Flask, Socket.IO, MySQL,
+    messagerie temps réel.
+  </p>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     INTRODUCTION GÉNÉRALE
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <span class="chapter-tag">// Introduction</span>
+  <h2 style="border:none;margin-top:0">Introduction générale</h2>
+
+  <h3>Contexte</h3>
+  <p>
+    L'IFRI accueille chaque année plus de <strong>1 200 étudiants</strong> répartis dans
+    six filières et cinq niveaux d'études. Ces étudiants évoluent dans un environnement
+    où la maîtrise simultanée de plusieurs disciplines techniques (programmation,
+    mathématiques, bases de données, réseaux, intelligence artificielle…) est exigée.
+  </p>
+  <p>
+    Or, chaque étudiant ne possède pas le même profil de compétences. Certains
+    excellent en algorithmique mais peinent en bases de données ; d'autres maîtrisent
+    le développement Web mais ont des difficultés en mathématiques. Cette
+    <strong>hétérogénéité des compétences</strong> représente un terrain fertile pour
+    l'entraide entre pairs.
+  </p>
+
+  <h3>Problématique</h3>
+  <p>
+    Actuellement, l'entraide entre étudiants de l'IFRI se fait de manière <strong>informelle
+    et chaotique</strong> : groupes WhatsApp surchargés, demandes d'aide dispersées,
+    difficulté à identifier les bonnes personnes ressources, créneaux horaires
+    rarement compatibles. Cette désorganisation entraîne :
+  </p>
+  <ul>
+    <li>Une <strong>perte de temps</strong> considérable pour trouver de l'aide pertinente</li>
+    <li>Un <strong>isolement académique</strong> des étudiants en difficulté qui n'osent pas demander</li>
+    <li>Une <strong>sous-utilisation</strong> des compétences existantes dans la communauté étudiante</li>
+    <li>L'absence d'un <strong>suivi structuré</strong> des échanges et des progrès</li>
+  </ul>
+  <p>
+    Comment alors mettre en place un système qui <strong>connecte automatiquement</strong>
+    les étudiants en fonction de leurs besoins et de leurs capacités, tout en
+    facilitant leur communication et le suivi de leurs interactions ?
+  </p>
+
+  <h3>Objectifs</h3>
+  <p><strong>Objectif général :</strong> concevoir et réaliser une plateforme web qui
+    automatise et structure le mentorat entre étudiants de l'IFRI.</p>
+  <p><strong>Objectifs spécifiques :</strong></p>
+  <ul>
+    <li>Permettre à chaque étudiant de créer un profil détaillé (points forts, lacunes, disponibilités)</li>
+    <li>Implémenter un algorithme de <strong>matching intelligent</strong> qui associe mentors et mentorés</li>
+    <li>Proposer une <strong>messagerie temps réel</strong> pour faciliter les échanges</li>
+    <li>Mettre en place un système de <strong>notifications push</strong> sur toutes les pages</li>
+    <li>Doter la plateforme d'un <strong>tableau de bord administrateur</strong> pour la gestion pédagogique</li>
+    <li>Assurer la <strong>sécurité des comptes</strong> (hash des mots de passe, vérification d'identité)</li>
+  </ul>
+
+  <h3>Plan du rapport</h3>
+  <p>Ce rapport est structuré en cinq chapitres :</p>
+  <ul>
+    <li>Le <strong>Chapitre 1</strong> présente le contexte de l'IFRI et analyse les besoins</li>
+    <li>Le <strong>Chapitre 2</strong> détaille la conception et les choix techniques</li>
+    <li>Le <strong>Chapitre 3</strong> décrit la réalisation et l'architecture du projet</li>
+    <li>Le <strong>Chapitre 4</strong> propose un manuel d'utilisation complet</li>
+    <li>Le <strong>Chapitre 5</strong> présente les tests et les résultats obtenus</li>
+  </ul>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CHAPITRE 1 — CONTEXTE & ANALYSE
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <span class="chapter-tag">// Chapitre 1</span>
+  <h2 style="border:none;margin-top:0">Contexte &amp; Analyse</h2>
+
+  <h3>1.1 L'IFRI et ses étudiants</h3>
+  <p>
+    L'Institut de Formation et de Recherche en Informatique (IFRI) de l'UAC propose
+    six filières principales, chacune déclinée en cinq niveaux (Licence 1 à Master 2) :
+  </p>
+  <table>
+    <thead>
+      <tr><th>Filière</th><th>Acronyme</th><th>Spécialisation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Génie Logiciel</td><td>GL</td><td>Conception et développement de logiciels</td></tr>
+      <tr><td>Intelligence Artificielle</td><td>IA</td><td>Apprentissage automatique, data science</td></tr>
+      <tr><td>Informatique de Gestion</td><td>IG</td><td>Systèmes d'information et gestion</td></tr>
+      <tr><td>Systèmes d'Information</td><td>SI</td><td>Architecture et bases de données</td></tr>
+      <tr><td>Systèmes Embarqués &amp; IoT</td><td>SE&amp;IoT</td><td>Électronique programmable, objets connectés</td></tr>
+      <tr><td>Sécurité Informatique &amp; Réseaux</td><td>SIRI</td><td>Cybersécurité, administration réseaux</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Cette diversité crée un <strong>vivier de compétences complémentaires</strong> :
+    un étudiant en GL maîtrise généralement le développement Web, qui peut être
+    utile à un étudiant en IA qui doit déployer son modèle. À l'inverse, l'étudiant
+    en IA peut aider l'étudiant en GL à comprendre les fondamentaux du Machine Learning.
+  </p>
+
+  <h3>1.2 Solutions existantes et leurs limites</h3>
+  <p>
+    Avant la conception d'IFRI MentorLink, les étudiants utilisaient principalement
+    trois canaux d'entraide :
+  </p>
+  <table>
+    <thead>
+      <tr><th>Outil</th><th>Avantages</th><th>Limites</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>WhatsApp (groupes)</td>
+        <td>Familiarité, instantanéité</td>
+        <td>Bruit excessif, perte de contexte, pas de filtrage par compétence</td>
+      </tr>
+      <tr>
+        <td>Discord (serveurs étudiants)</td>
+        <td>Organisation par salons</td>
+        <td>Faible adoption en dehors d'un noyau, sous-utilisé pour le mentorat</td>
+      </tr>
+      <tr>
+        <td>Rencontres en présentiel</td>
+        <td>Riches en interactions</td>
+        <td>Logistique difficile, hors campus impossible</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Aucune de ces solutions ne propose de <strong>matching automatique</strong> basé sur
+    les compétences réelles des étudiants, ni de <strong>traçabilité</strong> des échanges
+    pour mesurer l'impact pédagogique du mentorat.
+  </p>
+
+  <h3>1.3 Notre proposition</h3>
+  <p>
+    <strong>IFRI MentorLink</strong> répond à ces limites en proposant :
+  </p>
+  <ul>
+    <li>Une <strong>fiche profil structurée</strong> où chaque étudiant déclare ses points forts,
+        ses lacunes et ses disponibilités hebdomadaires</li>
+    <li>Un <strong>algorithme de matching</strong> qui calcule un score de compatibilité (0-100)
+        entre chaque paire d'utilisateurs</li>
+    <li>Une <strong>double liste</strong> : <em>mentors pour moi</em> + <em>personnes que je peux aider</em>,
+        valorisant ainsi le rôle de chacun</li>
+    <li>Une <strong>messagerie temps réel</strong> intégrée avec notifications push</li>
+    <li>Une <strong>interface responsive</strong> accessible depuis ordinateur ou téléphone</li>
+  </ul>
+  <div class="screenshot">
+    <b>[CAPTURE : Page d'accueil du site IFRI MentorLink]</b>
+    <small>Insérer ici une capture de la page d'accueil montrant le hero, les statistiques et le hub animé</small>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CHAPITRE 2 — CONCEPTION
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <span class="chapter-tag">// Chapitre 2</span>
+  <h2 style="border:none;margin-top:0">Conception</h2>
+
+  <h3>2.1 Cahier des charges</h3>
+
+  <h4>2.1.1 Besoins fonctionnels</h4>
+  <table>
+    <thead>
+      <tr><th>Code</th><th>Description</th><th>Priorité</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>BF-01</td><td>Inscription d'un étudiant avec validation</td><td>Haute</td></tr>
+      <tr><td>BF-02</td><td>Connexion sécurisée par email / mot de passe</td><td>Haute</td></tr>
+      <tr><td>BF-03</td><td>Réinitialisation du mot de passe (email + téléphone)</td><td>Moyenne</td></tr>
+      <tr><td>BF-04</td><td>Édition du profil (compétences, dispos, photo)</td><td>Haute</td></tr>
+      <tr><td>BF-05</td><td>Matching automatique mentor/mentoré</td><td>Haute</td></tr>
+      <tr><td>BF-06</td><td>Messagerie temps réel entre utilisateurs</td><td>Haute</td></tr>
+      <tr><td>BF-07</td><td>Notifications push sur toutes les pages</td><td>Moyenne</td></tr>
+      <tr><td>BF-08</td><td>Publication d'annonces (offre / demande d'aide)</td><td>Moyenne</td></tr>
+      <tr><td>BF-09</td><td>Tableau de bord administrateur</td><td>Moyenne</td></tr>
+      <tr><td>BF-10</td><td>Géolocalisation de l'IFRI sur la carte</td><td>Basse</td></tr>
+    </tbody>
+  </table>
+
+  <h4>2.1.2 Besoins non-fonctionnels</h4>
+  <ul>
+    <li><strong>Sécurité :</strong> mots de passe hashés (Werkzeug PBKDF2), sessions HTTP-only</li>
+    <li><strong>Performance :</strong> temps de réponse &lt; 500 ms pour les requêtes courantes</li>
+    <li><strong>Compatibilité :</strong> navigateurs modernes (Chrome, Firefox, Edge, Safari)</li>
+    <li><strong>Responsive :</strong> compatible mobile (largeurs ≥ 360 px)</li>
+    <li><strong>Maintenabilité :</strong> code commenté en français, fichiers organisés</li>
+  </ul>
+
+  <h3>2.2 Choix techniques</h3>
+  <table>
+    <thead>
+      <tr><th>Couche</th><th>Technologie</th><th>Justification</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Back-end</td><td>Python 3 + Flask 3.0</td><td>Simplicité, micro-framework léger, écosystème riche</td></tr>
+      <tr><td>Temps réel</td><td>Flask-SocketIO 5.3</td><td>WebSockets natifs avec fallback polling</td></tr>
+      <tr><td>BDD</td><td>MySQL 8 + PyMySQL</td><td>Robustesse, support des contraintes relationnelles</td></tr>
+      <tr><td>Front-end</td><td>HTML5 + CSS3 + JS natif</td><td>Pas de framework lourd, contrôle total</td></tr>
+      <tr><td>Authentification</td><td>Werkzeug security</td><td>Hash PBKDF2 SHA-256 intégré</td></tr>
+      <tr><td>Polices Web</td><td>Inter, Sora, JetBrains Mono</td><td>Open source, lisibles, modernes</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Nous avons délibérément <strong>évité l'utilisation d'ORM</strong> (SQLAlchemy) pour
+    garder un contrôle pédagogique sur les requêtes SQL et démontrer notre maîtrise
+    du langage. De même, nous n'utilisons pas <em>Flask-Login</em> et gérons les sessions
+    directement via le décorateur <code>require_login()</code> que nous avons écrit.
+  </p>
+
+  <h3>2.3 Modélisation de la base de données</h3>
+  <p>
+    La base de données comporte <strong>11 tables</strong>. Voici les principales et leurs relations :
+  </p>
+  <table>
+    <thead>
+      <tr><th>Table</th><th>Description</th><th>Clés principales</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>utilisateur</code></td><td>Comptes étudiants</td><td>id_User, email, tel</td></tr>
+      <tr><td><code>filiere</code></td><td>Filières IFRI (GL, IA, IM…)</td><td>id_Fil, lib_Fil</td></tr>
+      <tr><td><code>niveau</code></td><td>Niveaux (L1 à M2)</td><td>id_Niv, lib_Niv</td></tr>
+      <tr><td><code>matiere</code></td><td>Catalogue des matières</td><td>id_Mat, lib_Mat</td></tr>
+      <tr><td><code>cours</code></td><td>Couple (filière, niveau)</td><td>id_Cours, id_Fil, id_Niv</td></tr>
+      <tr><td><code>cours_matiere</code></td><td>Programme : matières par cours</td><td>id_Cours, id_Mat</td></tr>
+      <tr><td><code>competence</code></td><td>Forts / lacunes d'un utilisateur</td><td>id_User, id_Mat, maitrise</td></tr>
+      <tr><td><code>disponibilite</code></td><td>Créneaux horaires</td><td>id_Dispo, id_User, jour</td></tr>
+      <tr><td><code>annonce</code></td><td>Offres / demandes d'aide</td><td>id_Annonce, id_User, id_Mat</td></tr>
+      <tr><td><code>conversation</code></td><td>Discussions entre 2 utilisateurs</td><td>id_Convers, id_User1, id_User2</td></tr>
+      <tr><td><code>message</code></td><td>Messages échangés</td><td>id_Mess, id_Convers, contenu</td></tr>
+    </tbody>
+  </table>
+
+  <div class="screenshot">
+    <b>[CAPTURE : Diagramme MCD (modèle conceptuel) ou MLD (modèle logique)]</b>
+    <small>Insérer ici votre diagramme entité-association ou diagramme de classes UML de la BDD</small>
+  </div>
+</section>
+
+
+<section class="page-break">
+  <h3>2.4 Algorithme de matching</h3>
+  <p>
+    L'algorithme de matching est le <strong>cœur intellectuel</strong> du projet. Il calcule un
+    <em>score de compatibilité</em> entre un étudiant qui cherche de l'aide (<em>asker</em>)
+    et un étudiant qui peut aider (<em>helper</em>).
+  </p>
+
+  <h4>2.4.1 Pondération</h4>
+  <p>Le score sur 100 est calculé en trois composantes :</p>
+  <ul>
+    <li><strong>50 points — Complémentarité des matières</strong><br>
+        Proportion des lacunes de l'<em>asker</em> couvertes par les forts du <em>helper</em></li>
+    <li><strong>30 points — Compatibilité horaire</strong><br>
+        Proportion des créneaux de l'<em>asker</em> recouvrant ceux du <em>helper</em></li>
+    <li><strong>20 points — Proximité académique</strong><br>
+        10 pts si même filière + 10 pts si même niveau</li>
+  </ul>
+
+  <h4>2.4.2 Pseudo-code</h4>
+  <pre><code>POUR chaque utilisateur U (autre que moi) :
+    forts_U   = ensemble des matières où U est fort
+    lacunes_U = ensemble des matières où U est faible
+    dispos_U  = créneaux horaires de U
+
+    # SCORE MATIÈRES (50 pts)
+    communes = mes_lacunes ∩ forts_U
+    s_mat = (|communes| / |mes_lacunes|) × 50
+
+    # SCORE DISPOS (30 pts)
+    creneaux_communs = intersection horaire entre mes_dispos et dispos_U
+    s_disp = (|creneaux_couverts| / |mes_dispos|) × 30
+
+    # SCORE PROXIMITÉ (20 pts)
+    s_prox = 0
+    SI filière(U) == filière(moi) : s_prox += 10
+    SI niveau(U) == niveau(moi)   : s_prox += 10
+
+    score_total = s_mat + s_disp + s_prox</code></pre>
+
+  <h4>2.4.3 Double liste</h4>
+  <p>
+    L'algorithme est appliqué <strong>deux fois</strong> par requête :
+  </p>
+  <ol>
+    <li><strong>Mentors pour moi :</strong> on calcule le score pour chaque utilisateur en
+        prenant <em>l'utilisateur courant comme asker</em> (mes lacunes) et chaque autre
+        comme helper</li>
+    <li><strong>Personnes que je peux aider :</strong> on inverse les rôles. L'utilisateur
+        courant devient helper, et on cherche les askers dont les lacunes recoupent
+        mes forts</li>
+  </ol>
+  <p>
+    Cette dualité permet à un même étudiant d'être à la fois <em>mentoré</em> sur
+    certains sujets et <em>mentor</em> sur d'autres, conformément à la réalité
+    pédagogique.
+  </p>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CHAPITRE 3 — RÉALISATION
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <span class="chapter-tag">// Chapitre 3</span>
+  <h2 style="border:none;margin-top:0">Réalisation</h2>
+
+  <h3>3.1 Architecture technique</h3>
+  <p>
+    Le projet suit une <strong>architecture client-serveur classique</strong>, avec un
+    serveur Flask qui sert à la fois les pages HTML, les ressources statiques et
+    une API REST en JSON. Une connexion WebSocket (Socket.IO) gère le temps réel.
+  </p>
+  <pre><code>┌──────────────────────────────────────────────────────┐
+│                     CLIENT (Navigateur)              │
+│  ┌──────────────┐  ┌──────────────┐  ┌─────────────┐ │
+│  │  index.html  │  │   app.js     │  │  Socket.IO  │ │
+│  │   (vues)     │  │  (logique)   │  │   (client)  │ │
+│  └──────────────┘  └──────────────┘  └─────────────┘ │
+└─────────────┬─────────────────────────┬──────────────┘
+              │ HTTPS / REST            │ WebSocket
+              ▼                         ▼
+┌──────────────────────────────────────────────────────┐
+│                  SERVEUR (Flask)                     │
+│  ┌──────────────┐  ┌──────────────┐  ┌─────────────┐ │
+│  │   main.py    │  │ Flask-       │  │  Sessions   │ │
+│  │  (33 routes) │  │  SocketIO    │  │  (cookies)  │ │
+│  └──────────────┘  └──────────────┘  └─────────────┘ │
+└─────────────────────────┬────────────────────────────┘
+                          │ PyMySQL
+                          ▼
+┌──────────────────────────────────────────────────────┐
+│             MySQL 8 — Base "mentorlink"              │
+│           11 tables — utilisateur, message, …        │
+└──────────────────────────────────────────────────────┘</code></pre>
+
+  <h3>3.2 Description des fichiers</h3>
+  <p>
+    L'arborescence du projet est volontairement <strong>plate</strong> (aucun dossier
+    de sous-modules) pour faciliter la lecture pédagogique :
+  </p>
+  <pre><code>PIL1_2526_65/
+├── main.py            # Serveur Flask (back-end complet)
+├── app.js             # Logique front-end (SPA + Socket.IO client)
+├── index.html         # Interface utilisateur (toutes les vues)
+├── database.sql       # Schéma SQL + données initiales
+├── requirements.txt   # Dépendances Python
+├── README.md          # Documentation rapide
+├── rapport.html       # Ce document
+├── uploads/           # Photos de profil uploadées
+└── venv/              # Environnement virtuel Python (non versionné)</code></pre>
+
+  <h4>3.2.1 main.py — Serveur Flask</h4>
+  <p>
+    Le fichier <code>main.py</code> contient l'intégralité du back-end. Il fait environ
+    <strong>1 350 lignes</strong> et regroupe :
+  </p>
+  <ul>
+    <li><strong>Configuration Flask</strong> (clé de session, taille max d'upload, Socket.IO)</li>
+    <li><strong>Connexion MySQL</strong> via PyMySQL (cursor dict, autocommit désactivé)</li>
+    <li><strong>33 endpoints REST</strong> regroupés par domaine (auth, profil, mentors, messagerie, admin)</li>
+    <li><strong>3 événements Socket.IO</strong> : <code>join</code>, <code>join_user</code>, <code>send_message</code></li>
+    <li><strong>Fonctions utilitaires</strong> : matching, parsing téléphone, vérification d'image…</li>
+  </ul>
+
+  <h4>3.2.2 app.js — Logique front-end</h4>
+  <p>
+    Le fichier <code>app.js</code> contient toute la logique de l'application monopage
+    (SPA). Il fait environ <strong>1 240 lignes</strong> et inclut :
+  </p>
+  <ul>
+    <li><strong>État global</strong> (<code>ME</code>, <code>SOCK</code>, <code>IS_ADMIN</code>, <code>REFS</code>…)</li>
+    <li><strong>Gestionnaire de routes</strong> (fonction <code>show()</code>)</li>
+    <li><strong>Handlers globaux</strong> de <code>data-action</code> via un seul listener de clic</li>
+    <li><strong>Rendu dynamique</strong> des cartes mentor, conversations, profil, admin…</li>
+    <li><strong>Intersection Observer</strong> pour les animations <code>.reveal</code> au scroll</li>
+    <li><strong>Gestion Socket.IO</strong> : connexion, room utilisateur, push notifications</li>
+  </ul>
+
+  <h4>3.2.3 index.html — Interface utilisateur</h4>
+  <p>
+    Ce fichier unique contient <strong>toutes les vues</strong> de la SPA (single page
+    application). Chaque vue est une balise <code>&lt;section class="view" id="view-X"&gt;</code>
+    qui est affichée ou masquée par JavaScript.
+  </p>
+  <p>Les vues principales sont :</p>
+  <ul>
+    <li><code>view-home</code> : page d'accueil publique avec hero, sections, FAQ, contact</li>
+    <li><code>view-login</code>, <code>view-signup</code>, <code>view-forgot</code> : authentification</li>
+    <li><code>view-dashboard</code> : tableau de bord après connexion</li>
+    <li><code>view-mentors</code> : recherche et matching</li>
+    <li><code>view-profil</code> : édition du profil</li>
+    <li><code>view-messagerie</code> : conversations temps réel</li>
+    <li><code>view-admin-login</code>, <code>view-admin</code> : espace administrateur</li>
+  </ul>
+  <p>
+    Les <strong>3 modales</strong> (<code>modal-pub</code>, <code>modal-users</code>,
+    <code>modal-profview</code>) et le toast de notification <code>#notif-push</code>
+    sont positionnés à la fin du fichier.
+  </p>
+
+  <h4>3.2.4 database.sql — Schéma de base de données</h4>
+  <p>
+    Script SQL exécutable qui crée :
+  </p>
+  <ul>
+    <li>La base <code>mentorlink</code></li>
+    <li>Les <strong>11 tables</strong> avec contraintes et clés étrangères</li>
+    <li>Les <strong>données initiales</strong> : 6 filières, 5 niveaux, 20 matières, 30 cours, programme rempli</li>
+    <li>L'utilisateur MySQL dédié <code>mentorlink@localhost</code></li>
+  </ul>
+</section>
+
+
+<section class="page-break">
+  <h3>3.3 Fonctionnalités principales</h3>
+  <p>
+    Voici les onze fonctionnalités majeures, illustrées par leur interface utilisateur :
+  </p>
+
+  <h4>3.3.1 Inscription &amp; connexion sécurisées</h4>
+  <p>
+    Le formulaire d'inscription collecte : prénom, nom, email, téléphone (10 chiffres),
+    mot de passe, filière, niveau. Tous les mots de passe sont <strong>hashés en PBKDF2</strong>
+    via Werkzeug avant stockage. Une <strong>icône œil</strong> permet d'afficher temporairement
+    le mot de passe pour vérification.
+  </p>
+  <div class="screenshot">
+    <b>[CAPTURE : Page d'inscription]</b>
+    <small>Insérer une capture du formulaire d'inscription avec l'œil pour le mot de passe</small>
+  </div>
+
+  <h4>3.3.2 Profil utilisateur complet</h4>
+  <p>
+    Chaque étudiant complète : <em>photo</em>, <em>biographie</em>, <em>points forts</em>
+    (matières maîtrisées), <em>lacunes</em> (matières à améliorer), <em>disponibilités
+    hebdomadaires</em>. Une <strong>barre de progression</strong> indique le taux de complétion.
+  </p>
+  <div class="screenshot">
+    <b>[CAPTURE : Page profil]</b>
+    <small>Insérer une capture de la page profil montrant les tags compétences et disponibilités</small>
+  </div>
+
+  <h4>3.3.3 Matching dual mentor / mentoré</h4>
+  <p>
+    L'utilisateur visualise simultanément deux listes via deux onglets :
+  </p>
+  <ul>
+    <li><strong>Mentors pour moi :</strong> personnes pouvant l'aider sur ses lacunes</li>
+    <li><strong>Personnes que je peux aider :</strong> personnes dont les lacunes correspondent à mes forts</li>
+  </ul>
+  <p>
+    Chaque carte affiche le score de compatibilité, les matières communes et
+    les créneaux qui se chevauchent.
+  </p>
+  <div class="screenshot">
+    <b>[CAPTURE : Page Mentors avec les deux onglets et les cartes]</b>
+    <small>Insérer une capture de la page Mentors montrant les onglets et au moins 2 cartes</small>
+  </div>
+
+  <h4>3.3.4 Messagerie temps réel + push notifications</h4>
+  <p>
+    La messagerie utilise <strong>Socket.IO</strong> pour des échanges instantanés.
+    Lorsqu'un utilisateur reçoit un message <em>alors qu'il est sur une autre page</em>,
+    une notification toast apparaît en haut de l'écran pendant 5 secondes ;
+    un clic dessus ouvre directement la conversation.
+  </p>
+  <div class="screenshot">
+    <b>[CAPTURE : Page Messagerie + notification push en haut]</b>
+    <small>Insérer une capture avec une conversation ouverte et idéalement le toast notif visible</small>
+  </div>
+
+  <h4>3.3.5 Voir profil depuis la messagerie</h4>
+  <p>
+    Dans l'en-tête de chaque conversation, un bouton <em>« Voir profil »</em> affiche
+    une modale avec les informations détaillées de l'interlocuteur (compétences,
+    disponibilités, annonces) sans quitter la messagerie.
+  </p>
+  <div class="screenshot">
+    <b>[CAPTURE : Modale "Voir profil" dans la messagerie]</b>
+    <small>Insérer une capture de la modale qui s'ouvre quand on clique sur "Voir profil"</small>
+  </div>
+
+  <h4>3.3.6 Tableau de bord administrateur</h4>
+  <p>
+    Réservé aux responsables IFRI, accessible via un lien discret en bas de la page
+    de connexion. L'authentification se fait par <em>nom + prénom + mot de passe partagé</em>
+    (<code>IFRI_Motorlink.2526</code>). L'admin peut :
+  </p>
+  <ul>
+    <li>Voir les statistiques (utilisateurs, conversations, messages)</li>
+    <li>Ajouter ou supprimer des filières et des matières</li>
+    <li>Définir le programme : quelles matières sont enseignées pour chaque (filière, niveau)</li>
+  </ul>
+  <div class="screenshot">
+    <b>[CAPTURE : Tableau de bord administrateur]</b>
+    <small>Insérer une capture de la vue admin avec les stats, les listes filières/matières et le programme</small>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CHAPITRE 4 — MANUEL UTILISATEUR
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <span class="chapter-tag">// Chapitre 4</span>
+  <h2 style="border:none;margin-top:0">Manuel utilisateur</h2>
+  <p>
+    Ce chapitre guide l'utilisateur étape par étape dans l'utilisation
+    d'IFRI MentorLink. Aucun prérequis technique n'est nécessaire.
+  </p>
+
+  <h3>4.1 Inscription &amp; connexion</h3>
+
+  <h4>4.1.1 Créer un compte</h4>
+  <ol>
+    <li>Sur la page d'accueil, cliquer sur <strong>« Inscription »</strong> en haut à droite</li>
+    <li>Remplir tous les champs : prénom, nom, téléphone (10 chiffres),
+        email, mot de passe (minimum 6 caractères)</li>
+    <li>Sélectionner sa <strong>filière</strong> et son <strong>niveau d'études</strong></li>
+    <li>Cliquer sur <strong>« Créer mon compte »</strong></li>
+  </ol>
+  <div class="box box-info">
+    <h5>💡 Astuce</h5>
+    <p style="margin:0">L'icône <em>œil</em> à droite du champ mot de passe permet d'afficher le mot de passe pour le vérifier avant de valider.</p>
+  </div>
+
+  <h4>4.1.2 Se connecter</h4>
+  <ol>
+    <li>Cliquer sur <strong>« Connexion »</strong> en haut à droite</li>
+    <li>Saisir son <em>email</em> et son <em>mot de passe</em></li>
+    <li>Cliquer sur <strong>« Se connecter »</strong></li>
+  </ol>
+  <div class="screenshot">
+    <b>[CAPTURE : Page de connexion]</b>
+    <small>Insérer une capture du formulaire de connexion</small>
+  </div>
+</section>
+
+
+<section class="page-break">
+  <h3>4.2 Profil utilisateur</h3>
+  <p>
+    Le profil est l'élément central de la plateforme. <strong>Plus il est complet,
+    meilleurs sont les matchs proposés.</strong>
+  </p>
+
+  <h4>4.2.1 Compléter le profil</h4>
+  <ol>
+    <li>Aller sur <strong>« Profil »</strong> dans la navigation du haut</li>
+    <li>Cliquer sur l'avatar pour <strong>uploader une photo</strong> (max 5 Mo, formats JPG/PNG)</li>
+    <li>Rédiger une <strong>bio</strong> (facultatif) qui se présente brièvement</li>
+    <li>Sous <em>Points forts</em>, sélectionner une matière maîtrisée puis cliquer sur <strong>+ Ajouter</strong></li>
+    <li>Répéter pour les <em>Lacunes</em></li>
+    <li>Sous <em>Disponibilités</em>, ajouter chaque créneau hebdomadaire (jour, heure début, heure fin)</li>
+    <li>Cliquer sur <strong>« Enregistrer les modifications »</strong></li>
+  </ol>
+
+  <h4>4.2.2 Changer son mot de passe</h4>
+  <p>
+    En bas du profil, une section dédiée permet de changer le mot de passe :
+  </p>
+  <ol>
+    <li>Saisir l'<strong>ancien mot de passe</strong></li>
+    <li>Saisir le <strong>nouveau mot de passe</strong> (6 caractères minimum)</li>
+    <li>Confirmer le nouveau mot de passe</li>
+    <li>Cliquer sur <strong>« Changer mon mot de passe »</strong></li>
+  </ol>
+  <div class="screenshot">
+    <b>[CAPTURE : Section "Changer le mot de passe" du profil]</b>
+    <small>Insérer une capture du formulaire en bas du profil</small>
+  </div>
+</section>
+
+
+<section class="page-break">
+  <h3>4.3 Trouver des mentors</h3>
+
+  <h4>4.3.1 Accéder à la page Mentors</h4>
+  <p>
+    Dans la barre de navigation, cliquer sur <strong>« Mentors »</strong>.
+    <strong>Attention :</strong> ce lien n'est actif que si votre profil contient au moins
+    1 point fort, 1 lacune et 1 disponibilité.
+  </p>
+
+  <h4>4.3.2 Comprendre les deux listes</h4>
+  <table>
+    <thead>
+      <tr><th>Onglet</th><th>Contenu</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Mentors pour moi</strong></td>
+        <td>Personnes dont les compétences couvrent vos lacunes,
+            triées par score de compatibilité décroissant</td>
+      </tr>
+      <tr>
+        <td><strong>Personnes que je peux aider</strong></td>
+        <td>Personnes dont les lacunes correspondent à vos points forts.
+            C'est votre opportunité d'aider à votre tour !</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>4.3.3 Filtrer les résultats</h4>
+  <p>Quatre filtres sont disponibles :</p>
+  <ul>
+    <li>Recherche par <em>nom ou prénom</em></li>
+    <li>Filtre par <em>filière</em></li>
+    <li>Filtre par <em>format</em> souhaité (présentiel, en ligne, indifférent)</li>
+  </ul>
+
+  <h4>4.3.4 Contacter un mentor</h4>
+  <p>
+    Sur chaque carte mentor, cliquer sur <strong>« Contacter ce mentor »</strong>
+    (ou <em>« Proposer mon aide »</em> dans la deuxième liste). Cela ouvre
+    automatiquement une conversation dans la messagerie.
+  </p>
+  <div class="screenshot">
+    <b>[CAPTURE : Carte d'un mentor avec score, matières communes et bouton "Contacter"]</b>
+    <small>Insérer un zoom sur une carte mentor</small>
+  </div>
+</section>
+
+
+<section class="page-break">
+  <h3>4.4 Messagerie &amp; notifications</h3>
+
+  <h4>4.4.1 Envoyer un message</h4>
+  <ol>
+    <li>Cliquer sur <strong>« Messagerie »</strong> dans la navigation</li>
+    <li>Sélectionner une conversation à gauche, ou cliquer sur <strong>« + Nouvelle »</strong></li>
+    <li>Saisir le message dans le champ en bas</li>
+    <li>Appuyer sur <strong>Entrée</strong> ou cliquer sur <strong>« Envoyer »</strong></li>
+  </ol>
+
+  <h4>4.4.2 Voir le profil de l'interlocuteur</h4>
+  <p>
+    Dans l'en-tête de la conversation, cliquer sur le bouton <strong>« Voir profil »</strong>
+    en haut à droite. Une modale s'ouvre avec :
+  </p>
+  <ul>
+    <li>Photo, nom, filière, niveau</li>
+    <li>Biographie</li>
+    <li>Points forts et lacunes</li>
+    <li>Disponibilités hebdomadaires</li>
+    <li>Dernières annonces publiées</li>
+  </ul>
+
+  <h4>4.4.3 Recevoir des notifications</h4>
+  <p>
+    Lorsqu'un autre utilisateur vous envoie un message <em>alors que vous êtes
+    sur une autre page du site</em>, une <strong>notification push</strong> apparaît
+    en haut de l'écran pendant 5 secondes.
+  </p>
+  <div class="box box-info">
+    <h5>💡 Astuce</h5>
+    <p style="margin:0"><strong>Cliquez sur la notification</strong> pour ouvrir
+    directement la conversation correspondante.</p>
+  </div>
+  <div class="screenshot">
+    <b>[CAPTURE : Notification push en haut, avec photo + nom + extrait du message]</b>
+    <small>Insérer une capture où le toast notif est visible en haut</small>
+  </div>
+</section>
+
+
+<section class="page-break">
+  <h3>4.5 Mot de passe oublié</h3>
+  <p>
+    Si vous avez oublié votre mot de passe, vous pouvez le réinitialiser <strong>sans
+    quitter le site</strong> grâce à une vérification d'identité par <em>double clé</em>.
+  </p>
+
+  <h4>4.5.1 Procédure</h4>
+  <ol>
+    <li>Sur la page de connexion, cliquer sur <strong>« Mot de passe oublié ? »</strong>
+        sous le champ mot de passe</li>
+    <li>Saisir votre <strong>email</strong> enregistré</li>
+    <li>Saisir votre <strong>numéro de téléphone</strong> enregistré (10 chiffres)</li>
+    <li>Saisir le <strong>nouveau mot de passe</strong></li>
+    <li>Cliquer sur <strong>« Réinitialiser le mot de passe »</strong></li>
+  </ol>
+
+  <div class="box box-warn">
+    <h5>⚠️ Sécurité</h5>
+    <p style="margin:0">Pour des raisons de sécurité, si l'email et le téléphone
+    ne correspondent pas au même compte, vous recevrez un message d'erreur
+    générique sans précision sur quel champ est incorrect. Cela empêche un
+    attaquant de deviner les comptes existants.</p>
+  </div>
+
+  <div class="screenshot">
+    <b>[CAPTURE : Page "Mot de passe oublié"]</b>
+    <small>Insérer une capture du formulaire de réinitialisation</small>
+  </div>
+</section>
+
+
+<section class="page-break">
+  <h3>4.6 Tableau de bord administrateur</h3>
+  <p>
+    Cette section est <strong>réservée aux responsables pédagogiques de l'IFRI</strong>.
+    Elle n'est pas accessible aux étudiants ordinaires.
+  </p>
+
+  <h4>4.6.1 Connexion administrateur</h4>
+  <ol>
+    <li>Aller sur la page de connexion classique</li>
+    <li>Cliquer sur le petit lien <em>« Espace administrateur IFRI »</em> tout en bas</li>
+    <li>Saisir votre <strong>prénom</strong>, votre <strong>nom</strong> et le
+        <strong>mot de passe administrateur partagé</strong></li>
+    <li>Cliquer sur <strong>« Accéder »</strong></li>
+  </ol>
+
+  <h4>4.6.2 Fonctions disponibles</h4>
+  <ul>
+    <li><strong>Statistiques globales</strong> : nombre d'utilisateurs, conversations, messages</li>
+    <li><strong>Gestion des filières</strong> : ajouter, supprimer (impossible si des
+        utilisateurs y sont rattachés)</li>
+    <li><strong>Gestion des matières</strong> : ajouter, supprimer (impossible si des
+        compétences ou annonces utilisent la matière)</li>
+    <li><strong>Programme</strong> : pour chaque (filière, niveau), cocher les matières
+        enseignées. Cela conditionne ce que les utilisateurs peuvent choisir
+        comme forts ou lacunes</li>
+  </ul>
+  <div class="screenshot">
+    <b>[CAPTURE : Tableau de bord administrateur]</b>
+    <small>Insérer une capture montrant les stats + les 2 listes + le programme</small>
+  </div>
+
+  <h4>4.6.3 Se déconnecter</h4>
+  <p>
+    Cliquer sur le bouton <strong>« Déconnexion »</strong> en haut à droite
+    du tableau de bord. Vous revenez à la page d'accueil publique.
+  </p>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CHAPITRE 5 — TESTS & VALIDATION
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <span class="chapter-tag">// Chapitre 5</span>
+  <h2 style="border:none;margin-top:0">Tests &amp; Validation</h2>
+
+  <h3>5.1 Scénarios de test</h3>
+  <p>
+    Nous avons défini <strong>10 scénarios principaux</strong> pour valider le bon
+    fonctionnement de la plateforme :
+  </p>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Scénario</th><th>Résultat attendu</th><th>Statut</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>T-01</td><td>Création d'un compte avec email déjà utilisé</td><td>Refus + message clair</td><td>✅ OK</td></tr>
+      <tr><td>T-02</td><td>Connexion avec mauvais mot de passe</td><td>Erreur 401 + message</td><td>✅ OK</td></tr>
+      <tr><td>T-03</td><td>Accès à la page Mentors sans profil complet</td><td>Redirection vers Profil</td><td>✅ OK</td></tr>
+      <tr><td>T-04</td><td>Score de matching cohérent (forts ↔ lacunes)</td><td>Score entre 0 et 100</td><td>✅ OK</td></tr>
+      <tr><td>T-05</td><td>Envoi d'un message en temps réel</td><td>Réception immédiate côté destinataire</td><td>✅ OK</td></tr>
+      <tr><td>T-06</td><td>Notification push sur autre page</td><td>Toast affiché 5s</td><td>✅ OK</td></tr>
+      <tr><td>T-07</td><td>Clic sur notification → ouverture conversation</td><td>Navigation correcte</td><td>✅ OK</td></tr>
+      <tr><td>T-08</td><td>Réinitialisation mot de passe avec mauvais tel</td><td>Erreur générique</td><td>✅ OK</td></tr>
+      <tr><td>T-09</td><td>Suppression filière utilisée (admin)</td><td>Refus + message explicatif</td><td>✅ OK</td></tr>
+      <tr><td>T-10</td><td>Affichage mobile (largeur 360 px)</td><td>Hamburger + dispo logout</td><td>✅ OK</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.2 Difficultés rencontrées</h3>
+  <ul>
+    <li><strong>Mise en place de Socket.IO</strong> en parallèle de Flask classique : nécessité
+        d'utiliser <code>socketio.run()</code> au lieu de <code>app.run()</code></li>
+    <li><strong>Notifications push globales</strong> : nous avons résolu cela en faisant rejoindre
+        à chaque utilisateur connecté une <em>room personnelle</em> <code>user_&lt;id&gt;</code></li>
+    <li><strong>Filtrage des matières par filière × niveau</strong> : implémenté via la table
+        intermédiaire <code>cours_matiere</code></li>
+    <li><strong>Conflit caching_sha2_password</strong> au démarrage MySQL : résolu en créant
+        l'utilisateur avec <code>IDENTIFIED WITH mysql_native_password</code></li>
+  </ul>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CONCLUSION
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <span class="chapter-tag">// Conclusion</span>
+  <h2 style="border:none;margin-top:0">Conclusion &amp; Perspectives</h2>
+
+  <p>
+    Le projet <strong>IFRI MentorLink</strong> nous a permis de mettre en pratique
+    de nombreuses notions vues durant notre première année à l'IFRI :
+    programmation Python, bases de données relationnelles, développement Web
+    (HTML / CSS / JavaScript), modélisation, algorithmique et travail en équipe.
+  </p>
+
+  <p>
+    La plateforme répond aux <strong>10 besoins fonctionnels</strong> identifiés dans
+    le cahier des charges et apporte des fonctionnalités innovantes pour un projet
+    de Licence 1 : <em>messagerie temps réel</em>, <em>notifications push</em>,
+    <em>matching algorithmique</em>, <em>tableau de bord administrateur</em>.
+  </p>
+
+  <h3>Perspectives d'évolution</h3>
+  <p>Plusieurs pistes d'amélioration peuvent être envisagées :</p>
+  <ul>
+    <li><strong>Déploiement cloud</strong> sur Render.com avec base MySQL hébergée
+        (db4free.net ou Aiven), pour une accessibilité 24/7</li>
+    <li><strong>Authentification renforcée</strong> par envoi d'OTP SMS lors de la
+        réinitialisation du mot de passe</li>
+    <li><strong>Application mobile native</strong> (React Native ou Flutter) à partir
+        de la même API REST</li>
+    <li><strong>Système de notation</strong> des mentors par les mentorés pour valoriser
+        les meilleurs aidants</li>
+    <li><strong>Statistiques pédagogiques</strong> détaillées pour les responsables IFRI
+        (taux d'entraide par filière, matières les plus demandées…)</li>
+    <li><strong>Intégration calendrier</strong> (Google Calendar, etc.) pour automatiser
+        la planification des sessions de mentorat</li>
+    <li><strong>Suggestion proactive</strong> par email hebdomadaire des nouveaux mentors
+        disponibles</li>
+  </ul>
+
+  <p>
+    Au-delà des fonctionnalités, ce projet nous a appris la rigueur du travail
+    en groupe : utilisation de Git, répartition des tâches, gestion des conflits
+    de code, documentation technique. Autant de compétences essentielles pour
+    notre future vie professionnelle.
+  </p>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     BIBLIOGRAPHIE / WEBOGRAPHIE
+     ═══════════════════════════════════════════════════ -->
+<section class="page-break">
+  <span class="chapter-tag">// Références</span>
+  <h2 style="border:none;margin-top:0">Webographie</h2>
+
+  <h3>Documentation officielle</h3>
+  <ul>
+    <li>Flask Documentation : <a href="https://flask.palletsprojects.com/">flask.palletsprojects.com</a></li>
+    <li>Flask-SocketIO : <a href="https://flask-socketio.readthedocs.io/">flask-socketio.readthedocs.io</a></li>
+    <li>PyMySQL : <a href="https://pymysql.readthedocs.io/">pymysql.readthedocs.io</a></li>
+    <li>MySQL 8 Reference : <a href="https://dev.mysql.com/doc/refman/8.0/en/">dev.mysql.com/doc/refman/8.0</a></li>
+    <li>MDN Web Docs (HTML / CSS / JS) : <a href="https://developer.mozilla.org/">developer.mozilla.org</a></li>
+  </ul>
+
+  <h3>Outils &amp; bibliothèques</h3>
+  <ul>
+    <li>Werkzeug security : <a href="https://werkzeug.palletsprojects.com/">werkzeug.palletsprojects.com</a></li>
+    <li>Socket.IO Client : <a href="https://socket.io/">socket.io</a></li>
+    <li>Google Fonts (Inter, Sora, JetBrains Mono) : <a href="https://fonts.google.com/">fonts.google.com</a></li>
+  </ul>
+
+  <h3>Inspirations design</h3>
+  <ul>
+    <li>Linear : <a href="https://linear.app/">linear.app</a></li>
+    <li>Vercel : <a href="https://vercel.com/">vercel.com</a></li>
+    <li>Cal.com : <a href="https://cal.com/">cal.com</a></li>
+  </ul>
+
+  <p style="margin-top:3em;color:#5e7494;font-size:.86rem;text-align:center;border-top:1px solid #e4e7eb;padding-top:1.4em">
+    Rapport rédigé en juin 2026 — Groupe 65 — IFRI / UAC<br>
+    Document produit en HTML et exporté en PDF
+  </p>
+</section>
+
+</body>
+</html>

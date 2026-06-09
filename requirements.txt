@@ -1,20 +1,27 @@
-bidict==0.23.1
-blinker==1.9.0
-click==8.4.1
-Flask==3.1.3
-Flask-Login==0.6.3
-Flask-SocketIO==5.6.1
-Flask-SQLAlchemy==3.1.1
-greenlet==3.5.1
-h11==0.16.0
-itsdangerous==2.2.0
-Jinja2==3.1.6
-MarkupSafe==3.0.3
-psycopg2-binary==2.9.12
-python-engineio==4.13.2
-python-socketio==5.16.2
-simple-websocket==1.1.0
-SQLAlchemy==2.0.50
-typing_extensions==4.15.0
-Werkzeug==3.1.8
-wsproto==1.3.2
+# ============================================================
+# IFRI MentorLink — Bibliothèques Python nécessaires
+# ============================================================
+# Pour installer toutes ces bibliothèques d'un coup :
+#   pip install -r requirements.txt
+# ============================================================
+
+# Flask : framework web minimaliste pour Python.
+# C'est lui qui crée le serveur HTTP, gère les routes (/, /api/login...)
+# et envoie les pages HTML au navigateur.
+Flask==3.0.3
+
+# Flask-SocketIO : extension de Flask pour la communication temps réel.
+# Permet au serveur d'envoyer des messages au navigateur SANS qu'il
+# en fasse la demande. Indispensable pour notre chat instantané.
+Flask-SocketIO==5.3.6
+
+# PyMySQL : driver Python pour parler à la base de données MySQL.
+# Permet d'exécuter des requêtes SQL (SELECT, INSERT, etc.)
+# depuis le code Python.
+PyMySQL==1.1.1
+
+# Werkzeug : bibliothèque utilitaire fournie avec Flask.
+# Nous l'utilisons pour :
+#   - generate_password_hash / check_password_hash (sécurité des mots de passe)
+#   - secure_filename (nettoyage des noms de fichiers uploadés)
+Werkzeug==3.0.3

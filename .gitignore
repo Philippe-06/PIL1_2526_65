@@ -1,15 +1,21 @@
-# Python
+# Environnement virtuel Python
 venv/
+env/
+.venv/
+
+# Cache Python
 __pycache__/
 *.pyc
 *.pyo
-.env
-*.sqlite3
 
-# OS
+# Photos uploadées (données privées)
+uploads/*
+!uploads/.gitkeep
+
+# Système et IDE
 .DS_Store
-Thumbs.db
-
-# IDE
 .vscode/
 .idea/
+*.log
+*.tmp
+*.swp

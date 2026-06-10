@@ -66,7 +66,11 @@ ADMIN_PASSWORD = 'IFRI_Motorlink.2526'
 #  HELPERS
 # ============================================================
 def db():
-    return pymysql.connect(**DB_CONFIG)
+    try:
+        return pymysql.connect(**DB_CONFIG)
+    except Exception as e:
+        print(f'ERREUR DB: {e}', flush=True)
+        raise
 
 
 def ok(payload=None, **extra):

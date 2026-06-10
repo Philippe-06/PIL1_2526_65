@@ -30,8 +30,8 @@ Werkzeug==3.0.3
 # Utilisé par Render.com pour servir l'application Flask.
 # (En local on utilise le serveur Flask intégré, mais en production
 #  Render impose gunicorn pour la stabilité et les performances.)
-gunicorn==21.2.0
+gunicorn==20.1.0
 
 # eventlet : permet à Flask-SocketIO de fonctionner avec gunicorn
 # (nécessaire pour les WebSockets en production sur Render)
-eventlet==0.35.2
+eventlet==0.33.3

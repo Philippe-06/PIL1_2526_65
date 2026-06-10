@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+# Monkey-patch eventlet OBLIGATOIREMENT en premier (avant tout import)
+# Nécessaire pour que Flask-SocketIO fonctionne avec gunicorn en production
+import eventlet
+eventlet.monkey_patch()
+
 """
 ================================================================
   IFRI MentorLink — Serveur (back-end)
@@ -37,10 +42,11 @@ app = Flask(__name__, static_folder=None, template_folder='.')
 app.secret_key = os.environ.get('MENTORLINK_SECRET', 'dev-secret-ifri-mentorlink')
 app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024
 
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
 
 DB_CONFIG = {
     'host':     os.environ.get('DB_HOST', 'localhost'),
+    'port':     int(os.environ.get('DB_PORT', 3306)),  # Railway utilise un port custom
     'user':     os.environ.get('DB_USER', 'mentorlink'),
     'password': os.environ.get('DB_PASS', 'MentorLink_2026!'),
     'database': os.environ.get('DB_NAME', 'mentorlink'),
@@ -1341,4 +1347,6 @@ if __name__ == '__main__':
     except pymysql.Error as e:
         print('✗ Connexion MySQL ÉCHEC :', e)
     print('─' * 60)
-    socketio.run(app, host='0.0.0.0', port=5000, debug=True, allow_unsafe_werkzeug=True)
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('FLASK_ENV') != 'production'
+    socketio.run(app, host='0.0.0.0', port=port, debug=debug, allow_unsafe_werkzeug=True)

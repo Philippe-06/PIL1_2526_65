@@ -1,12 +1,12 @@
 /* Projet : IFRI_MentorLink
    Groupe : 65
    Fichier : database.sql
-   Rôle : Création et initialisation de la base de données du projet
+   Role : Creation et initialisation de la base de donnees du projet
    Auteur : LenoumiBel-Mira & Sergius
    Date : 05/06/2026
 */
 
--- Création de la Base de Données proprement dite
+-- Creation de la Base de Donnees proprement dite
 CREATE DATABASE IF NOT EXISTS mentorlink;
 USE mentorlink;
 
@@ -28,7 +28,7 @@ CREATE TABLE matiere (
     lib_Mat VARCHAR(100) NOT NULL UNIQUE
 );
 
--- 4. Table COURS : représente le couple (filière, niveau)
+-- 4. Table COURS : represente le couple (filiere, niveau)
 --    Ex: cours #1 = "GL en Licence 1"
 CREATE TABLE cours (
     id_Cours INT AUTO_INCREMENT PRIMARY KEY,
@@ -40,9 +40,9 @@ CREATE TABLE cours (
     UNIQUE KEY uniq_fil_niv (id_Fil, id_Niv)
 );
 
--- 5. Table COURS_MATIERE : ASSOCIATION DEFINIR qui lie cours <-> matière
---    C'est ce qui définit quelles matières sont enseignées
---    pour une filière donnée à un niveau donné.
+-- 5. Table COURS_MATIERE : ASSOCIATION DEFINIR qui lie cours <-> matiere
+--    C'est ce qui definit quelles matieres sont enseignees
+--    pour une filiere donnee a un niveau donne.
 CREATE TABLE cours_matiere (
     id_Cours INT NOT NULL,
     id_Mat INT NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE competence (
 CREATE TABLE annonce (
     id_Annonce INT AUTO_INCREMENT PRIMARY KEY,
     type_annonce VARCHAR(10) NOT NULL CHECK (type_annonce IN ('Offre','Demande')),
-    format VARCHAR(20) NOT NULL CHECK (format IN ('Présentiel','En ligne','Les deux')),
+    format VARCHAR(20) NOT NULL CHECK (format IN ('Presentiel','En ligne','Les deux')),
     details TEXT,
     date_pub TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     id_User INT NOT NULL,
@@ -124,47 +124,47 @@ CREATE TABLE message(
 );
 
 -- ============================================================
--- SEEDING : Initialisation des données par défaut
+-- SEEDING : Initialisation des donnees par defaut
 -- ============================================================
 
--- Filières IFRI
+-- Filieres IFRI
 INSERT INTO filiere (lib_Fil) VALUES
 ('GL'), ('IA'), ('IM'), ('SI'), ('SE&IoT'), ('SIRI');
 
--- Niveaux d'études
+-- Niveaux d'etudes
 INSERT INTO niveau (lib_Niv) VALUES
 ('Licence 1'), ('Licence 2'), ('Licence 3'), ('Master 1'), ('Master 2');
 
--- Matières (catalogue global)
+-- Matieres (catalogue global)
 INSERT INTO matiere (lib_Mat) VALUES
 ('Algorithmique'),
 ('TEEO'),
 ('Anglais technique'),
-('Droits et déontologie liée au TIC'),
+('Droits et deontologie liee au TIC'),
 ('Projet integrateur'),
 ('Programmation Python'),
 ('Programmation C'),
 ('Programmation Java'),
-('Base de données'),
-('Réseaux informatiques'),
-('Systèmes d''exploitation'),
-('Génie logiciel'),
+('Base de donnees'),
+('Reseaux informatiques'),
+('Systemes d''exploitation'),
+('Genie logiciel'),
 ('Intelligence artificielle'),
 ('Machine Learning'),
-('Cybersécurité'),
-('Développement Web'),
-('Développement Mobile'),
-('Mathématiques'),
+('Cybersecurite'),
+('Developpement Web'),
+('Developpement Mobile'),
+('Mathematiques'),
 ('Statistiques'),
 ('Architecture des ordinateurs');
 
--- Création des cours : 1 cours par couple (filière, niveau) = 30 cours
--- L'admin pourra ensuite y associer/désassocier des matières
+-- Creation des cours : 1 cours par couple (filiere, niveau) = 30 cours
+-- L'admin pourra ensuite y associer/desassocier des matieres
 INSERT INTO cours (lib_Cours, id_Fil, id_Niv)
 SELECT CONCAT(f.lib_Fil, ' - ', n.lib_Niv), f.id_Fil, n.id_Niv
 FROM filiere f CROSS JOIN niveau n;
 
--- Initialisation par défaut : on attache toutes les matières à tous les cours
+-- Initialisation par defaut : on attache toutes les matieres a tous les cours
 -- (l'admin pourra affiner ensuite)
 INSERT INTO cours_matiere (id_Cours, id_Mat)
 SELECT c.id_Cours, m.id_Mat
@@ -179,7 +179,7 @@ CREATE INDEX idx_cours_fil_niv ON cours(id_Fil, id_Niv);
 CREATE INDEX idx_cours_matiere_mat ON cours_matiere(id_Mat);
 
 -- ============================================================
--- Utilisateur MySQL dédié à l'application
+-- Utilisateur MySQL dedie a l'application
 -- ============================================================
 DROP USER IF EXISTS 'mentorlink'@'localhost';
 CREATE USER 'mentorlink'@'localhost' IDENTIFIED WITH mysql_native_password BY 'MentorLink_2026!';

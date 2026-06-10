@@ -43,11 +43,13 @@ socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 
 DB_CONFIG = {
     'host':     os.environ.get('DB_HOST', 'localhost'),
-    'port':     int(os.environ.get('DB_PORT', 3306)),  # Railway utilise un port custom
+    'port':     int(os.environ.get('DB_PORT', 3306)),
     'user':     os.environ.get('DB_USER', 'mentorlink'),
     'password': os.environ.get('DB_PASS', 'MentorLink_2026!'),
     'database': os.environ.get('DB_NAME', 'mentorlink'),
     'charset':  'utf8mb4',
+    'use_unicode': True,
+    'init_command': 'SET NAMES utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor,
     'autocommit': False,
 }

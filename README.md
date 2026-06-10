@@ -2,7 +2,7 @@
 
 > Plateforme web de mentorat académique et professionnel entre étudiants de l'IFRI
 
-**Lien du site déployé :** https://ifri-mentorlink.onrender.com
+**Lien du site déployé :** https://ifri-mentorlonk.onrender.com
 
 ---
 
@@ -14,8 +14,8 @@
 | HOUESSOU Sergius | SI | Backend — Inscription, Connexion, Profil, Base de données |
 | AMAMION Hermas | SI | Rapport, Messagerie en temps réel, Historique des conversations |
 | TCHATI Minti Silas | GL | Rapport, Messagerie en temps réel, Historique des conversations |
-| AdjaïFlavia | — | Frontend, Algorithme de compatibilité, Recherche de mentors |
-| Philippe-06 | — | Frontend, Algorithme de compatibilité, Recherche de mentors |
+| AdjaïFlavia | GL | Frontend, Algorithme de compatibilité, Recherche de mentors |
+| Philippe-06 | GL | Frontend, Algorithme de compatibilité, Recherche de mentors |
 
 ---
 

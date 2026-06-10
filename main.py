@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# Monkey-patch eventlet OBLIGATOIREMENT en premier (avant tout import)
 # Nécessaire pour que Flask-SocketIO fonctionne avec gunicorn en production
 
 """

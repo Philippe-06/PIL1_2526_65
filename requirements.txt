@@ -4,3 +4,4 @@ PyMySQL==1.1.1
 Werkzeug==3.0.3
 gunicorn==23.0.0
 setuptools==75.0.0
+cryptography==41.0.7

@@ -1,37 +1,7 @@
-# ============================================================
-# IFRI MentorLink — Bibliothèques Python nécessaires
-# ============================================================
-# Pour installer toutes ces bibliothèques d'un coup :
-#   pip install -r requirements.txt
-# ============================================================
-
-# Flask : framework web minimaliste pour Python.
-# C'est lui qui crée le serveur HTTP, gère les routes (/, /api/login...)
-# et envoie les pages HTML au navigateur.
 Flask==3.0.3
-
-# Flask-SocketIO : extension de Flask pour la communication temps réel.
-# Permet au serveur d'envoyer des messages au navigateur SANS qu'il
-# en fasse la demande. Indispensable pour notre chat instantané.
 Flask-SocketIO==5.3.6
-
-# PyMySQL : driver Python pour parler à la base de données MySQL.
-# Permet d'exécuter des requêtes SQL (SELECT, INSERT, etc.)
-# depuis le code Python.
 PyMySQL==1.1.1
-
-# Werkzeug : bibliothèque utilitaire fournie avec Flask.
-# Nous l'utilisons pour :
-#   - generate_password_hash / check_password_hash (sécurité des mots de passe)
-#   - secure_filename (nettoyage des noms de fichiers uploadés)
 Werkzeug==3.0.3
-
-# Gunicorn : serveur WSGI de production.
-# Utilisé par Render.com pour servir l'application Flask.
-# (En local on utilise le serveur Flask intégré, mais en production
-#  Render impose gunicorn pour la stabilité et les performances.)
 gunicorn==20.1.0
-
-# eventlet : permet à Flask-SocketIO de fonctionner avec gunicorn
-# (nécessaire pour les WebSockets en production sur Render)
 eventlet==0.33.3
+setuptools==68.0.0

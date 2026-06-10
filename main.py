@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 # Monkey-patch eventlet OBLIGATOIREMENT en premier (avant tout import)
 # Nécessaire pour que Flask-SocketIO fonctionne avec gunicorn en production
-import eventlet
-eventlet.monkey_patch()
 
 """
 ================================================================
@@ -42,7 +40,7 @@ app = Flask(__name__, static_folder=None, template_folder='.')
 app.secret_key = os.environ.get('MENTORLINK_SECRET', 'dev-secret-ifri-mentorlink')
 app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024
 
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 
 DB_CONFIG = {
     'host':     os.environ.get('DB_HOST', 'localhost'),
